@@ -1,0 +1,34 @@
+Martin:
+
+Text und Vortragsaufbau:
+
+________
+SLIDE 1:	Vorteile und Nachteile
+TEXT:
+
+Kommen wir nun zu den Vor und Nachteilen von SLIP. Auf der einen Seite die Vorteile. Hier zeichnet sich SLIP durch eine sehr einfache Implementierung aus. Zudem hat es sehr wenig Overhead. 
+Leider überwiegen die Nachteile jedoch in ihrer Anzahl. Bei SLIP kann es nämlich zu Verbindungsunterbrechungen durch Steuersignale kommen. Z.B. wenn man das "Signal" für CRTL-C übertragen will. Zudem hat SLIP keine eingebaute Fehlererkennung und eine niedrige Datenübertragungsrate (1.2 kb/s - 19.2 kb/s). Da SLIP nur Bits und das END zeichen sendet, ist zudem kein Platz um Meta-Daten über Parameter zu übertragen.
+
+Durch diese Vor und Nachteile haben sich einige Erweiterungswünsche entwickelt. 
+________
+SLIDE 2:	Erweiterungswünsche
+TEXT:
+
+1. Einer der Nachteile war die nicht vorhandene Fehlererkennung und Korrektur und somit ist dies auch einer der Erweiterungswünsche.
+
+2. Ein weiterer Erweiterungswunsch war Daten-Komprimierung. Eine Methode der Komprimierung wurde durch Van-Jacobson im Jahr 1990 vorgeschlagen und angenommen. SLIP mit aktiver Van-Jacobson-Komprimierung wird C-SLIP (compressed) genannt.
+
+3. SLIP benötigt die IP beider Clients um eine Verbindung aufzubauen. Es existiert keine Möglichkeit um Adressierungs-Informationen über eine SLIP-Verbindung zu übergeben.
+
+4. Da man bei SLIP keine Parameter übergeben kann, kann nur ein einzelnes Protokoll über SLIP laufen. Der Erweiterungswunsch wäre also eine Multiprotokoll-Fähigkeit.
+
+________
+SLIDE 3:	Ablösung durch PPP
+TEXT:
+
+SLIP existiert seit 1988, wurde jedoch mit der Zeit fast vollständig von PPP abgelöst. Was ist PPP?
+Point to Protocol. Es ist wesentlich komplexer und es gibt einige wichtige Unterschiede zu SLIP.
+1. Bei PPP können Zeichen verboten werden und durch Zeichensequenzen ersetzt werden, dies löst das Problem der Verbindungsunterbrechung von Steuersignalen (zb. CTRL-C).
+2. Bei PPP kann man folgende Parameter übergeben: IP Adresse, Gateqay-Adresse und Authentifizierung (wird oft von Internet Service Providern verlangt). Auch andere Parameter wie z.B. eine Komprimierung können über PPP zwischen den Parteien beim Verbindungsaufbau ausgehandelt werden, was bei SLIP nicht möglich ist.
+
+ENDE
