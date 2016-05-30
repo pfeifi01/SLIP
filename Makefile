@@ -3,8 +3,7 @@ TEXFLAGS  = -shell-escape -file-line-error -halt-on-error
 BIB       = bibtex
 BIBFLAGS  = -terse
 REFS      = references.bib
-ALL       = short.pdf article.pdf book.pdf report.pdf beamer.pdf \
-            beamer_handout.pdf
+ALL       = beamer.pdf beamer_handout.pdf
 
 .PHONY: all
 all: $(ALL)

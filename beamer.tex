@@ -4,23 +4,46 @@
 \documentclass[beamer]{uibk}
 \title{SLIP}
 \subtitle{Serial Line Internet Protocol}
-\author{Artur Fedrigolli, Roland Gritzer, Martin Pfeifhofer }
+\author{A. Fedrigolli, R. Gritzer, M. Pfeifhofer }
 \date{\today}
 
-%\AtBeginSection[] {
-%\begin{frame}{Outline}
-%\tableofcontents[currentsection]
-    %\end{frame}
-%}
-\hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black
-}
-\graphicspath{ {./media/} }
+\hypersetup{colorlinks,
+            citecolor=black,
+            filecolor=black,
+            linkcolor=black,
+            urlcolor=black}
+\graphicspath{{./media/}}
 
+\usepackage{color}
+\usepackage{tabto}
+\usepackage{listings}
+
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+
+\lstset{
+    backgroundcolor=\color{lbcolor},
+    tabsize=4,
+    language=C,
+    basicstyle=\scriptsize,
+    upquote=true,
+    aboveskip={1.5\baselineskip},
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=false,
+    breaklines=true,
+    prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    numbers=left,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    keywordstyle=\color[rgb]{0,0,1},
+    commentstyle=\color[rgb]{0.026,0.112,0.095},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+    numberstyle=\color[rgb]{0.205, 0.142, 0.73}
+}
 
 \begin{document}
 
@@ -41,25 +64,54 @@
 \end{frame}
 
 \begin{frame}{Einordnung}
-
   \begin{center}
-  \includegraphics[scale=0.5]{layer.jpg}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{layer.jpg}
   \end{center}
+\end{frame}
 
+\begin{frame}{Einordnung}
+  \begin{center}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{layer2.jpg}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Details}
   \newpage
   \begin{center}
-  \includegraphics[scale=0.5]{ip1.png}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ip1.png}
   \end{center}
-
 \end{frame}
 
 \begin{frame}{Details}
   \newpage
   \begin{center}
-  \includegraphics[scale=0.5]{ip2.png}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ip2.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Details}
+  \newpage
+  \begin{center}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{escaping.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Details}
+  \newpage
+  \begin{center}
+  \begin{itemize}
+    \item END      \tabto{3cm} 0xC0 (192)
+    \item ESC      \tabto{3cm} 0xDB (219)
+    \item ESC\_END \tabto{3cm} 0xDC (220)
+    \item ESC\_ESC \tabto{3cm} 0xDD (221)
+  \end{itemize}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Details}
+  \newpage
+  \begin{center}
+    \lstinputlisting{src/send.c}
   \end{center}
 \end{frame}
 
