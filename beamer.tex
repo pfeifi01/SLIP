@@ -4,7 +4,7 @@
 \documentclass[beamer]{uibk}
 \title{SLIP}
 \subtitle{Serial Line Internet Protocol}
-\author{A. Fedrigolli, R. Gritzer, M. Pfeifhofer }
+\author{A. Fedrigolli, R. Gritzer, M Pfeifhofer }
 \date{\today}
 
 \hypersetup{colorlinks,
@@ -21,8 +21,7 @@
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
 
-\lstset{
-    backgroundcolor=\color{lbcolor},
+\lstset{backgroundcolor=\color{lbcolor},
     tabsize=4,
     language=C,
     basicstyle=\scriptsize,
@@ -42,8 +41,7 @@
     keywordstyle=\color[rgb]{0,0,1},
     commentstyle=\color[rgb]{0.026,0.112,0.095},
     stringstyle=\color[rgb]{0.627,0.126,0.941},
-    numberstyle=\color[rgb]{0.205, 0.142, 0.73}
-}
+    numberstyle=\color[rgb]{0.205, 0.142, 0.73}}
 
 \begin{document}
 
@@ -141,7 +139,24 @@
     \item Rechner Adressierung
     \item Multi-Protokoll Fähigkeit
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Erweiterungen}
+  \begin{block}{CSLIP - RFC 1044}
+    Sendet nur Änderungen der TCP/IP Header. \\
+    40 Byte - 7 Byte pro Header im Durchschnitt
+  \end{block}
+  \begin{block}{PPP - RFC 1661}
+    Ermöglicht:
+    \begin{itemize}
+      \item Ersetzung von Steuersignalen
+      \item Komprimierung
+      \item Übertragung von Netzwerk-Parametern
+    \end{itemize}
+    
+  \end{block}
 
 \end{frame}
+
 
 \end{document}
