@@ -3,8 +3,8 @@
 
 \documentclass[beamer]{uibk}
 \title{SLIP}
-\subtitle{Serial Line Internet Protocol}
-\author{A. Fedrigolli, R. Gritzer, M Pfeifhofer }
+\subtitle{RFC 1055 \\ Serial Line Internet Protocol}
+\author{A. Fedrigolli, R. Gritzer, M. Pfeifhofer }
 \date{\today}
 
 \hypersetup{colorlinks,
@@ -14,9 +14,14 @@
             urlcolor=black}
 \graphicspath{{./media/}}
 
+\newcommand\textbox[1]{%
+  \parbox{.333\textwidth}{#1}%
+}
+
 \usepackage{color}
 \usepackage{tabto}
 \usepackage{listings}
+\usepackage{lipsum}
 
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
@@ -48,19 +53,37 @@
 \maketitle
 
 \begin{frame}{Problem}
-  Wir schreiben das Jahr 1988.
-
-  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{1988computer.jpg}
-
+  \begin{center}
+  Wir schreiben das Jahr {\huge 1988!}
+  \end{center}
 \end{frame}
 
-\begin{frame}{Ansatz}
+\begin{frame}{Problem?}
+  \begin{center}
+  \includegraphics[width=\textwidth, height=\textheight ,keepaspectratio]{iheart.jpg}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Problem?}
+  \begin{center}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{1988computer.jpg}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Problem}
+  \begin{center}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{serial.jpg}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{Problem}
   \begin{center}
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ansatz_1.jpg}
   \end{center}
 \end{frame}
 
-\begin{frame}{Ansatz}
+\begin{frame}{Problem}
   \begin{center}
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ansatz_2.jpg}
   \end{center}
@@ -90,14 +113,14 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{Details}
+\begin{frame}{Aufbau}
   \newpage
   \begin{center}
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ip1.png}
   \end{center}
 \end{frame}
 
-\begin{frame}{Details}
+\begin{frame}{Aufbau}
   \newpage
   \begin{center}
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ip2.png}
@@ -123,7 +146,7 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{Details}
+\begin{frame}{Implementierung}
   \newpage
   \begin{center}
     \lstinputlisting{src/send.c}
@@ -137,10 +160,10 @@
         \item Sehr wenig Overhead
       \end{itemize}
     \end{block}
-
+    \pause
     \begin{alertblock}{Nachteile}
       \begin{itemize}
-        \item Steuersignale können Verbindung unterbrechen (z.B. Strg-C)
+        \item Steuersignale können Verbindung unterbrechen (z.B. Strg-Q, Strg-S)
         \item Keine Fehlererkennung
         \item Übertragungsrate (1,2 kbps - 19,2 kbps)
         \item Keine Meta-Daten übertragbar
@@ -150,41 +173,50 @@
 \end{frame}
 
 \begin{frame}{Erweiterungs - Wünsche}
-  \begin{itemize}
-    \item Fehlerkorrektur
-    \item Daten-Komprimierung
-    \item Rechner-Adressierung
-    \item Multi-Protokoll Fähigkeit
-  \end{itemize}
+  %\begin{itemize}
+    %\item Fehlerkorrektur
+    %\item Daten-Komprimierung
+    %\item Rechner-Adressierung
+    %\item Multi-Protokoll Fähigkeit
+  %\end{itemize}
+
+  \begin{center} 
+  \visible<1-4>{
+    \includegraphics[width=.4\textwidth,height=.4\textheight,keepaspectratio]{erw1.png}
+  }
+  \quad\quad\quad
+  \pause
+  \visible<2-4>{\includegraphics[width=.4\textwidth,height=.4\textheight,keepaspectratio]{erw2.png}}
+  \pause
+  \\
+  ~\\
+  \visible<3-4>{\includegraphics[width=.4\textwidth,height=.4\textheight,keepaspectratio]{erw3.png}}
+  \quad\quad\quad
+  \pause
+  \visible<4>{\includegraphics[width=.4\textwidth,height=.4\textheight,keepaspectratio]{erw4.png}}
+  \end{center} 
 \end{frame}
 
-\begin{frame}{Erweiterungen}
-  \begin{block}{CSLIP - RFC 1044}
-    Sendet nur Änderungen der TCP/IP Header. \\
-    40 Byte - 7 Byte pro Header im Durchschnitt
+\begin{frame}{Ausblick}
+  \begin{block}{CSLIP (1990) \hfill RFC 1144}
+    Ermöglicht Komprimierung\\
+    \tabto{.9cm} Sendet nur Änderungen der TCP/IP Header. \\
+    \tabto{.9cm} 40 Byte - 7 Byte pro Header im Durchschnitt
   \end{block}
-  \begin{block}{PPP - RFC 1661}
+  \pause
+  \begin{block}{PPP (1994) \hfill RFC 1661}
     Ermöglicht:
     \begin{itemize}
       \item Ersetzung von Steuersignalen
-      \item Komprimierung
       \item Fehlererkennung
       \item Übertragung von Netzwerk-Parametern
     \end{itemize}
   \end{block}
 \end{frame}
 
-\begin{frame}{Ablösung durch PPP}
-Was ist PPP?\newline
-\includegraphics[scale=0.5]{ppp.jpg}
-(Hübscheres Bild...)\newline
-Vorteie gegenüber SLIP:\newline
-(Aufzählungszeichen meiden...vlt Visualisierung)
-\end{frame}
-
-\begin{frame}{Fragen}
+\begin{frame}{Fragen?}
 \begin{center}
-\includegraphics[scale=0.8]{ppp.jpg}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Fragen.jpg}
 \end{center}
 
 \end{frame}
