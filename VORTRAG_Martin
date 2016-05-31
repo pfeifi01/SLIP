@@ -1,0 +1,32 @@
+Martin:
+
+Text und Vortragsaufbau:
+
+________
+SLIDE 1:	Vorteile und Nachteile
+TEXT:
+
+Wie Roland schon gesagt hat, handelt es sich hier um eine sehr einfache Implementierung, was der erste Vorteil von SLIP ist. Zudem hat es sehr wenig Overhead, da wir nur eine Reihe von Character und End-Zeichen ohne weitere Parameter senden. 
+Leider überwiegen die Nachteile jedoch in ihrer Anzahl. Beispielsweise kann es bei SLIP zu Verbindungsunterbrechungen durch Steuersignalen kommen wenn z.b. das ASCII-Zeichen für CRTL-Q übertragen will. Zudem hat SLIP keine eingebaute Fehlererkennung/Korrektur und eine niedrige Datenübertragungsrate (1.2 kb/s - 19.2 kb/s). Da SLIP nur Bits und das END zeichen sendet, ist zudem kein Platz um Meta-Daten über Parameter zu übertragen.
+
+Durch diese Vor und Nachteile haben sich einige Erweiterungswünsche entwickelt. 
+________
+SLIDE 2:	Erweiterungswünsche
+TEXT:
+
+1. Da die serielle Schnittstelle wie jede andere Hardware fehleranfällig ist, wünschte man sich eine Fehlererkennung und -Korrektur. SLIP verlässt sich hierbei nämlich auf die höheren Schichten.
+
+2. Da SLIP nur eine geringe Datenübertragung hat wünschte man sich eine Möglichkeit die Daten komprimieren zu können und somit mehr Daten in der gleichen Zeit senden zu können.
+Da man bei SLIP keinerlei Parameter übertragen kann entwickeln sich daraus gleich zwei E-Wünsche:
+Einmal die Rechneradressierung für die eine zu übergebende Adresse fehlt und weiters die Fähigkeit mehrere Protokolle auszuführen, für die ein Parameter für weitere Protokolle fehlt.
+
+Einige Erweiterungswünsche wurden dann auch umgesetzt.
+________
+SLIDE 3:	Ablösung durch PPP
+TEXT:
+1990 wurde mit CSLIP eine Datenkomprimierung eingeführt. Die Idee dahinter ist, dass man nur den Unterschied zum vorherigen IP-Header in Byte sendet. Da der durchschnittliche IP Header 7 Byte hat?
+
+SLIP existiert seit 1988, wurde jedoch mit der Zeit fast vollständig von PPP abgelöst.
+PPP heißt Point to Protocol. Es ist wesentlich komplexer und es gibt einige wichtige Unterschiede zu SLIP.
+Beispielsweise können bei PPP Zeichen verboten werden und durch Zeichensequenzen ersetzt werden, dies löst das Problem der Verbindungsunterbrechung von Steuersignalen (zb. CTRL-Q).
+Ein weiterer Unterschied ist, dass man bei PPP Parameter für IP Adresse, Gateway-Adresse und Authentifizierung (wird oft von Internet Service Providern verlangt) übergeben kann. Es ist auch möglich einen Parameter zur Aushandlung von Datenkomprimierung zu übergeben.
